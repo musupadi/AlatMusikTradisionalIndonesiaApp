@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#F5085F</color>
+    <color name="white">#FFFFFF</color>
+    <color name="textcolor">#01300F</color>
+    <color name="Biru">#0D24A3</color>
+    <color name="BiruMuda">#1BB8CC</color>
+    <color name="Coklat">#C4701D</color>
+    <color name="Merah">#D50000</color>
+    <color name="Black">#000000</color>
+    <color name="Yellow">#EEC50A</color>
+    <color name="Ungu">#AA00FF</color>
+</resources>
