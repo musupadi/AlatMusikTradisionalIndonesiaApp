@@ -1,6 +1,7 @@
 package com.destiny.alatmusiktradisionalindonesia.Activity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import com.destiny.alatmusiktradisionalindonesia.R;
 public class ScoreActivity extends AppCompatActivity {
     TextView SCORE;
     Button Kuis,Kembali;
+    MediaPlayer Hasil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,9 +21,11 @@ public class ScoreActivity extends AppCompatActivity {
         SCORE = (TextView)findViewById(R.id.tvScore);
         Kuis = (Button)findViewById(R.id.btnKuis);
         Kembali = (Button)findViewById(R.id.btnKembali);
+        Hasil = MediaPlayer.create(ScoreActivity.this,R.raw.hasilkuis);
         Intent data = getIntent();
         final String Score = data.getStringExtra("SCORE");
         SCORE.setText("Selamat Anda mendapatkan Score : \n"+Score);
+        Hasil.start();
         Kuis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,5 +42,10 @@ public class ScoreActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

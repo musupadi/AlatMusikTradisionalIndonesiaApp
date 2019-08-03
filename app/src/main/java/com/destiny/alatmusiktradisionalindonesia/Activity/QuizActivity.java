@@ -1,6 +1,7 @@
 package com.destiny.alatmusiktradisionalindonesia.Activity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,7 @@ public class QuizActivity extends AppCompatActivity {
     Button A,B,C,D;
     TextView Soal,Tittle;
     private ArrayList<Model> pList = new ArrayList<>();
-
+    MediaPlayer Benar,Salah;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,8 @@ public class QuizActivity extends AppCompatActivity {
         Intent data = getIntent();
         String No = data.getStringExtra("NO");
         final String Score = data.getStringExtra("SCORE");
+        Benar = MediaPlayer.create(QuizActivity.this,R.raw.jawabanbenar);
+        Salah = MediaPlayer.create(QuizActivity.this,R.raw.jawabansalah);
         final int no = Integer.parseInt(No);
         A = (Button)findViewById(R.id.btnA);
         B = (Button)findViewById(R.id.btnB);
@@ -50,11 +53,13 @@ public class QuizActivity extends AppCompatActivity {
                         Intent intent=new Intent(QuizActivity.this, ScoreActivity.class);
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)+1),Toast.LENGTH_SHORT).show();
                         intent.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)+1));
+                        Benar.start();
                         startActivity(intent);
                     }else{
                         Intent goInput = new Intent(QuizActivity.this, QuizActivity.class);
                         goInput.putExtra("NO",String.valueOf(no+1));
                         goInput.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)+1));
+                        Benar.start();
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)+1),Toast.LENGTH_SHORT).show();
                         QuizActivity.this.startActivities(new Intent[]{goInput});
                     }
@@ -63,11 +68,13 @@ public class QuizActivity extends AppCompatActivity {
                         Intent intent=new Intent(QuizActivity.this, ScoreActivity.class);
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)),Toast.LENGTH_SHORT).show();
                         intent.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)));
+                        Salah.start();
                         startActivity(intent);
                     }else{
                         Intent goInput = new Intent(QuizActivity.this, QuizActivity.class);
                         goInput.putExtra("NO",String.valueOf(no+1));
                         goInput.putExtra("SCORE",String.valueOf(Score));
+                        Salah.start();
                         Toast.makeText(QuizActivity.this,Score,Toast.LENGTH_SHORT).show();
                         QuizActivity.this.startActivities(new Intent[]{goInput});
                     }
@@ -82,11 +89,13 @@ public class QuizActivity extends AppCompatActivity {
                         Intent intent=new Intent(QuizActivity.this, ScoreActivity.class);
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)+1),Toast.LENGTH_SHORT).show();
                         intent.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)+1));
+                        Benar.start();
                         startActivity(intent);
                     }else{
                         Intent goInput = new Intent(QuizActivity.this, QuizActivity.class);
                         goInput.putExtra("NO",String.valueOf(no+1));
                         goInput.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)+1));
+                        Benar.start();
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)+1),Toast.LENGTH_SHORT).show();
                         QuizActivity.this.startActivities(new Intent[]{goInput});
                     }
@@ -95,11 +104,13 @@ public class QuizActivity extends AppCompatActivity {
                         Intent intent=new Intent(QuizActivity.this, ScoreActivity.class);
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)),Toast.LENGTH_SHORT).show();
                         intent.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)));
+                        Salah.start();
                         startActivity(intent);
                     }else{
                         Intent goInput = new Intent(QuizActivity.this, QuizActivity.class);
                         goInput.putExtra("NO",String.valueOf(no+1));
                         goInput.putExtra("SCORE",String.valueOf(Score));
+                        Salah.start();
                         Toast.makeText(QuizActivity.this,Score,Toast.LENGTH_SHORT).show();
                         QuizActivity.this.startActivities(new Intent[]{goInput});
                     }
@@ -114,10 +125,12 @@ public class QuizActivity extends AppCompatActivity {
                         Intent intent=new Intent(QuizActivity.this, ScoreActivity.class);
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)+1),Toast.LENGTH_SHORT).show();
                         intent.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)+1));
+                        Benar.start();
                         startActivity(intent);
                     }else{
                         Intent goInput = new Intent(QuizActivity.this, QuizActivity.class);
                         goInput.putExtra("NO",String.valueOf(no+1));
+                        Benar.start();
                         goInput.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)+1));
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)+1),Toast.LENGTH_SHORT).show();
                         QuizActivity.this.startActivities(new Intent[]{goInput});
@@ -127,11 +140,13 @@ public class QuizActivity extends AppCompatActivity {
                         Intent intent=new Intent(QuizActivity.this, ScoreActivity.class);
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)),Toast.LENGTH_SHORT).show();
                         intent.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)));
+                        Salah.start();
                         startActivity(intent);
                     }else{
                         Intent goInput = new Intent(QuizActivity.this, QuizActivity.class);
                         goInput.putExtra("NO",String.valueOf(no+1));
                         goInput.putExtra("SCORE",String.valueOf(Score));
+                        Salah.start();
                         Toast.makeText(QuizActivity.this,Score,Toast.LENGTH_SHORT).show();
                         QuizActivity.this.startActivities(new Intent[]{goInput});
                     }
@@ -143,32 +158,41 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (pList.get(no).getJawaban().equals("D")){
                     if (no >= pList.size()-1){
-                        Intent intent=new Intent(QuizActivity.this, Activity3.class);
+                        Intent intent=new Intent(QuizActivity.this, ScoreActivity.class);
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)+1),Toast.LENGTH_SHORT).show();
                         intent.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)+1));
+                        Benar.start();
                         startActivity(intent);
                     }else{
                         Intent goInput = new Intent(QuizActivity.this, QuizActivity.class);
                         goInput.putExtra("NO",String.valueOf(no+1));
                         goInput.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)+1));
+                        Benar.start();
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)+1),Toast.LENGTH_SHORT).show();
                         QuizActivity.this.startActivities(new Intent[]{goInput});
                     }
                 }else{
                     if (no >= pList.size()-1){
-                        Intent intent=new Intent(QuizActivity.this, Activity3.class);
+                        Intent intent=new Intent(QuizActivity.this, ScoreActivity .class);
                         Toast.makeText(QuizActivity.this,String.valueOf(Integer.parseInt(Score)),Toast.LENGTH_SHORT).show();
                         intent.putExtra("SCORE",String.valueOf(Integer.parseInt(Score)));
+                        Salah.start();
                         startActivity(intent);
                     }else{
                         Intent goInput = new Intent(QuizActivity.this, QuizActivity.class);
                         goInput.putExtra("NO",String.valueOf(no+1));
                         goInput.putExtra("SCORE",String.valueOf(Score));
+                        Salah.start();
                         Toast.makeText(QuizActivity.this,Score,Toast.LENGTH_SHORT).show();
                         QuizActivity.this.startActivities(new Intent[]{goInput});
                     }
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

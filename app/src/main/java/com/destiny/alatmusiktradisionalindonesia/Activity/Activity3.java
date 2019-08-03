@@ -51,4 +51,9 @@ public class Activity3 extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        
+    }
 }
